@@ -1,1 +1,113 @@
-<p>register works!</p>
+<div class="form-class container">
+  <form
+    class="card"
+    #registerForm="ngForm"
+    (submit)="onSubmit()"
+  >
+    <div class="card-content">
+      <span class="card-title center">Зарегистрироваться</span>
+      <div class="input-field">
+        <input
+          id="name"
+          type="text"
+          name="name"
+          [ngClass]="{'invalid': userName.invalid && userName.touched}"
+          #userName="ngModel"
+          [(ngModel)]="name"
+          required
+        >
+        <label for="name">Name:</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="userName.invalid && userName.touched"
+        >
+          <span *ngIf="userName.errors['required']">Введите имя</span>
+        </span>
+      </div>
+      <div class="input-field">
+        <input
+          id="email"
+          type="email"
+          name="email"
+          [ngClass]="{'invalid': userEmail.invalid && userEmail.touched}"
+          #userEmail="ngModel"
+          [(ngModel)]="email"
+          pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+          required
+        >
+        <label for="email">Email:</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="userEmail.invalid && userEmail.touched"
+        >
+          <span *ngIf="userEmail.errors['required']">Введите email</span>
+          <span *ngIf="userEmail.errors['email']">Email не валидный</span>
+        </span>
+      </div>
+      <div class="input-field">
+        <input
+          id="password"
+          type="password"
+          [ngClass]="{'invalid': userPassword.invalid && userPassword.touched}"
+          name="password"
+          #userPassword="ngModel"
+          [(ngModel)]="password"
+          required
+
+        >
+        <label for="password">Пароль:</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="userPassword.invalid && userPassword.touched"
+        >
+          <span *ngIf="userPassword.errors['required']">Введите пароль</span>
+          <span
+            *ngIf="userPassword.errors['minlength']
+            && userPassword.errors['minlength']['requiredLength']"
+          >
+            Пароль должен быть не менее {{userPassword.errors['minlength']['requiredLength']}}
+            символов.
+            Сейчас {{userPassword.errors['minlength']['actualLength']}}
+          </span>
+        </span>
+      </div>
+      <div class="input-field">
+        <div>
+          <input
+            type="file"
+            class="display-none"
+            (change)="onFileUpload($event)"
+            #input
+          >
+          <input
+            type="text"
+            name="image"
+            #userImage="ngModel"
+            [(ngModel)]="image"
+          >
+          <button
+            (click)="triggerClick()"
+            [disabled]="registerForm.disabled"
+            type="button"
+            class="waves-effect waves-light btn orange lighten-2 mb2"
+          >
+            <i class="material-icons left">backup</i>
+            Загрузить изображение
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-action center">
+      <button
+        type="submit"
+        class="modal-action btn waves-effect"
+        [disabled]="registerForm.invalid || registerForm.disabled"
+      >
+        Зарегистрироваться
+      </button>
+    </div>
+  </form>
+
+</div>
+

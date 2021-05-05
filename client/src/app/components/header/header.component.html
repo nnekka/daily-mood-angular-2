@@ -1,1 +1,16 @@
-<p>header works!</p>
+<nav>
+  <div class="nav-wrapper teal darken-3">
+    <div class="container">
+      <a routerLink="/" class="brand-logo">
+        <i class="material-icons">cloud_queue</i>
+        Daily Mood
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

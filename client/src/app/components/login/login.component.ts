@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Subscription} from "rxjs/internal/Subscription";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  email: string
+  password: string
+  sub: Subscription
+  @ViewChild('loginForm') form: any
+
+  constructor(
+
+  ) {}
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    console.log(this.form.value)
   }
 
 }
