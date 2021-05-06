@@ -5,9 +5,13 @@
         <i class="material-icons">cloud_queue</i>
         Daily Mood
       </a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right hide-on-med-and-down" *ngIf="!user">
         <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
         <li routerLinkActive="active"><a routerLink="/register">Register</a></li>
+      </ul>
+      <ul class="right hide-on-med-and-down" *ngIf="user">
+        <li routerLinkActive="active"><a routerLink="/user/{{user.id}}">{{user.name}}</a></li>
+        <li routerLinkActive="active" (click)="onLogout()"><a>Log out</a></li>
       </ul>
     </div>
   </div>

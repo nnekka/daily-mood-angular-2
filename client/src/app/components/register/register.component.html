@@ -53,7 +53,7 @@
           #userPassword="ngModel"
           [(ngModel)]="password"
           required
-
+          minlength="6"
         >
         <label for="password">Пароль:</label>
         <span
@@ -67,7 +67,6 @@
           >
             Пароль должен быть не менее {{userPassword.errors['minlength']['requiredLength']}}
             символов.
-            Сейчас {{userPassword.errors['minlength']['actualLength']}}
           </span>
         </span>
       </div>

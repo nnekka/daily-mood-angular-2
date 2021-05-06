@@ -32,7 +32,7 @@ const upload = multer({
 })
 
 router.post('/', upload.single('image'), (req, res) => {
-    res.send(`${req.file.path}`)
+    res.json({image: `${req.file.path}`}) //<= ангуляр не понимает строки, потому надо посылать объект
 })
 
 export default router

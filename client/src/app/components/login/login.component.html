@@ -24,7 +24,7 @@
           *ngIf="userEmail.invalid && userEmail.touched"
         >
           <span *ngIf="userEmail.errors['required']">Введите email</span>
-          <span *ngIf="userEmail.errors['email']">Email не валидный</span>
+          <span *ngIf="userEmail.errors['pattern']">Email не валидный</span>
         </span>
       </div>
       <div class="input-field">
