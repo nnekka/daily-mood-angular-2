@@ -1,0 +1,60 @@
+<div class="page-title center">
+  <h4>Создать календарь</h4>
+</div>
+
+<div class="row">
+    <form
+      class="col m12 card"
+      [formGroup]="form"
+    >
+      <div class="card-content container">
+
+        <div class="input-field">
+          <input
+            id="title"
+            type="text"
+            formControlName="title"
+            [ngClass]="{'invalid': form.get('title').invalid && form.get('title').touched}"
+          >
+          <label for="title">Название календаря</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            id="year"
+            type="number"
+            formControlName="year"
+            [ngClass]="{'invalid': form.get('year').invalid && form.get('year').touched}"
+          >
+          <label for="year">Год</label>
+        </div>
+
+        <div class="input-field">
+          <textarea
+            id="description"
+            type="text"
+            class="materialize-textarea"
+            formControlName="description"
+            [ngClass]="{'invalid': form.get('description').invalid && form.get('description').touched}"
+            rows="3"
+          ></textarea>
+          <label for="description">Для чего этот календарь</label>
+        </div>
+
+        <div class="input-field center">
+          <div class="btn btn-small ma1">С картинками</div>
+          <div class="btn btn-small ma1">Цветная</div>
+        </div>
+
+        <div class="center">
+          <button
+            class="btn btn-primary teal darken-3"
+            type="submit"
+          >
+            Создать
+          </button>
+        </div>
+
+      </div>
+    </form>
+</div>

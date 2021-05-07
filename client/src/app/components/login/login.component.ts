@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.authService.isAuth
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       )
 
     this.route.queryParams.subscribe((params: Params) => {
-      if (params['registered']) {                                        //<-- после редиректа с регистрации
+      if (params['registered']) {                                      //<-- после редиректа с регистрации
         MaterializeService.toast('Войдите со своим логином и паролем')
       } else if (params['accessDenied']) {                             //<-- после редиректа с auth.guard
         MaterializeService.toast('Авторизуйтесь для выполнения этого действия')
@@ -45,7 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.sub){
+    if (this.sub) {
       this.sub.unsubscribe()
     }
   }

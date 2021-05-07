@@ -1,1 +1,79 @@
-<p>dashboard works!</p>
+<div class="page-title center">
+  <h4>Календари</h4>
+</div>
+
+<div class="row">
+  <div class="col m12" *ngIf="!pending; else loader">
+    <table
+      class="responsive-table bordered"
+      *ngIf="calendars.length > 0; else noCalendars"
+    >
+      <thead>
+      <tr >
+        <th class="center">Название</th>
+        <th class="center">Описание</th>
+        <th class="center">Год</th>
+        <th class="center">Тип легенды</th>
+        <th class="center"></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let calendar of calendars">
+        <td>{{calendar.title}}</td>
+        <td>{{calendar.description}}</td>
+        <td>{{calendar.year}}</td>
+        <td>{{calendar.legendType}}</td>
+        <td>
+          <button
+            class="btn btn-small"
+          >
+            <i class="material-icons">visibility</i>
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-small"
+          >
+            <i class="material-icons">edit</i>
+          </button>
+        </td>
+        <td>
+          <button
+            class="btn btn-small red"
+          >
+            <i class="material-icons">delete</i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #loader>
+  <div class="center">
+    <app-loader></app-loader>
+  </div>
+</ng-template>
+
+<ng-template #noCalendars>
+  <div class="center">
+    У вас еще нет календарей.
+    <div class="p2">
+      <div
+        class="btn btn-small"
+        routerLink="/create-calendar"
+      >
+        Создайте
+      </div> свой первый календарь!
+    </div>
+
+  </div>
+</ng-template>
+
+
+
+
+

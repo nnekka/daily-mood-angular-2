@@ -1,1 +1,31 @@
 @import "~materialize-css/dist/css/materialize.min.css";
+
+
+.p1 {
+  padding: 5px;
+}
+
+.p2 {
+  padding: 10px;
+}
+
+.p3 {
+  padding: 15px;
+}
+
+.ma1 {
+  margin: 5px;
+}
+
+.ma2 {
+  margin: 10px;
+}
+
+.ma3 {
+  margin: 15px;
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

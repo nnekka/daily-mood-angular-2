@@ -5,6 +5,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {HeaderComponent} from "./components/header/header.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {AuthGuard} from "./shared/auth.quard";
+import {CreateCalendarComponent} from "./components/create-calendar/create-calendar.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
       { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'create-calendar', component: CreateCalendarComponent, canActivate: [AuthGuard] },
     ]
   },
 ];

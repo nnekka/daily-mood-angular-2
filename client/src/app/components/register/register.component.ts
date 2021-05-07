@@ -26,8 +26,7 @@ export class RegisterComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
   }

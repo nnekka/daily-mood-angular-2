@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../shared/interfaces";
 import {AuthService} from "../../services/auth.service";
 
@@ -13,20 +13,20 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.authService.loggedUser
       .subscribe(
         (user: User) => {
-          if (user != null){
+          if (user != null) {
             this.user = user
           }
         }
       )
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logout()
   }
 
