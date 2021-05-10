@@ -18,6 +18,13 @@ export interface Calendar {
   id?: string;
 }
 
+export interface NewCalendar {
+  title: string;
+  year: number;
+  description: string;
+  legendType: string;
+}
+
 export interface Day {
   day: number;
   month: number;

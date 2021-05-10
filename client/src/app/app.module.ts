@@ -13,6 +13,8 @@ import {TokenInterceptor} from "./shared/token.interceptor";
 import { LoaderComponent } from './components/loader/loader.component';
 import { CreateCalendarComponent } from './components/create-calendar/create-calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddColorLegendComponent } from './components/add-color-legend/add-color-legend.component';
+import { AddImageLegendComponent } from './components/add-image-legend/add-image-legend.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardComponent,
     LoaderComponent,
     CreateCalendarComponent,
+    AddColorLegendComponent,
+    AddImageLegendComponent,
   ],
   imports: [
     BrowserModule,

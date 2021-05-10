@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
         (user: User) => {
           if (user != null) {
             this.user = user
+          } else {
+            this.user = null
           }
         }
       )
