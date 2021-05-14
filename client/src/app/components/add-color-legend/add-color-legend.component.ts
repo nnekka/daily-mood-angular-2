@@ -16,6 +16,7 @@ export class AddColorLegendComponent implements OnInit {
   colors: string[] = ['red', 'blue', 'black', 'teal', 'green', 'pink', 'purple', 'bisque', 'indigo']
   selectedColor: string
   calendarId: string
+  calendar: Calendar
 
   constructor(
     private calendarService: CalendarService,
@@ -28,6 +29,17 @@ export class AddColorLegendComponent implements OnInit {
       (params: ParamMap) => {
         if (params.has('id')){
           this.calendarId = params.get('id')
+          this.calendarService.getCalendarById(this.calendarId)
+            .subscribe(
+              (calendar: Calendar) => {
+                this.calendar = calendar
+                console.log(this.calendar)
+              },
+              error => {
+                console.error(error)
+                MaterializeService.toast(error.error.errors[0].msg)
+              }
+            )
         }
       }
     )

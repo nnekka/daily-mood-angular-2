@@ -54,7 +54,18 @@
           <button
             class="btn btn-small"
           >
-            <i class="material-icons">edit</i>
+            <i class="material-icons"
+               routerLink="/calendar/{{calendar._id}}/add-color-legend"
+               *ngIf="calendar.legendType == 'цветная'"
+            >
+              edit
+            </i>
+            <i class="material-icons"
+               routerLink="/calendar/{{calendar._id}}/add-image-legend"
+               *ngIf="calendar.legendType == 'с картинками'"
+            >
+              edit
+            </i>
           </button>
         </td>
         <td>
