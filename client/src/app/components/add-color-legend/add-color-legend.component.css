@@ -1,0 +1,9 @@
+.legend-cell {
+  border: 1px solid grey;
+  width: 30px;
+  height: 30px;
+}
+.color-row {
+  display: inline-block;
+  margin: 2px;
+}

@@ -15,6 +15,8 @@ import { CreateCalendarComponent } from './components/create-calendar/create-cal
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddColorLegendComponent } from './components/add-color-legend/add-color-legend.component';
 import { AddImageLegendComponent } from './components/add-image-legend/add-image-legend.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { LegendsComponent } from './components/legends/legends.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { AddImageLegendComponent } from './components/add-image-legend/add-image
     CreateCalendarComponent,
     AddColorLegendComponent,
     AddImageLegendComponent,
+    CalendarComponent,
+    LegendsComponent,
   ],
   imports: [
     BrowserModule,

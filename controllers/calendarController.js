@@ -84,7 +84,7 @@ export const addLegend = async (req, res) => {
         }
         calendar.legends = calendar.legends.concat(legend)
         await calendar.save()
-        res.json(calendar)
+        res.status(200).json(calendar)
     }
     catch (e) {
         errorHandler(res, e)

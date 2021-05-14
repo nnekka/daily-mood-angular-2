@@ -19,4 +19,9 @@ export class CalendarService {
   createCalendar(calendar: NewCalendar): Observable<Calendar>{
     return this.http.post<Calendar>('/api/calendars', calendar )
   }
+
+  addColorLegend(id: string, color: string, text: string): Observable<Calendar>{
+    return this.http.put<Calendar>(`/api/calendars/${id}/legend`, {color, text})
+  }
+
 }

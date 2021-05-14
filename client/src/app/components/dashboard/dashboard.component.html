@@ -9,7 +9,7 @@
       *ngIf="calendars.length > 0; else noCalendars"
     >
       <thead>
-      <tr >
+      <tr>
         <th class="center">Название</th>
         <th class="center">Описание</th>
         <th class="center">Год</th>
@@ -21,7 +21,25 @@
       </thead>
       <tbody>
       <tr *ngFor="let calendar of calendars">
-        <td>{{calendar.title}}</td>
+        <td *ngIf="calendar.legends.length > 0">
+          <a routerLink="/calendar/{{calendar._id}}">
+            {{calendar.title}}
+          </a>
+        </td>
+        <td *ngIf="calendar.legends.length == 0">
+          <a
+            routerLink="/calendar/{{calendar._id}}/add-color-legend"
+            *ngIf="calendar.legendType == 'цветная'"
+          >
+            {{calendar.title}}
+          </a>
+          <a
+            routerLink="/calendar/{{calendar._id}}/add-image-legend"
+            *ngIf="calendar.legendType == 'с картинками'"
+          >
+            {{calendar.title}}
+          </a>
+        </td>
         <td>{{calendar.description}}</td>
         <td>{{calendar.year}}</td>
         <td>{{calendar.legendType}}</td>
@@ -67,7 +85,8 @@
         routerLink="/create-calendar"
       >
         Создайте
-      </div> свой первый календарь!
+      </div>
+      свой первый календарь!
     </div>
 
   </div>

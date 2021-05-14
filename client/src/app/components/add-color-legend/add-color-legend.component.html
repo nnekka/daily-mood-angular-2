@@ -1,1 +1,56 @@
-<p>add-color-legend works!</p>
+<h4 class="center">Теперь вы можете выбрать цвет легенды и дать ей описание</h4>
+
+<form
+  class="card"
+  #legendForm="ngForm"
+  (submit)="onSubmit()"
+>
+  <div class="card-content">
+    <div class="row">
+      <div class="col m12">
+        <h5 class="card-title">Выберите цвет</h5>
+        <div *ngFor="let color of colors" class="color-row">
+          <div
+            class="legend-cell btn btn-small"
+            style="background-color: {{color}}"
+            (click)="onColorClick(color)"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="selectedColor">
+      <div class="col m12">
+        Вы выбрали:
+        <div
+          class="legend-cell btn btn-small"
+          style="background-color: {{selectedColor}}"
+        ></div>
+      </div>
+    </div>
+
+    <div class="input-field" *ngIf="selectedColor">
+      <input
+        id="text"
+        type="text"
+        name="text"
+        [ngClass]="{'invalid': textField.invalid && textField.touched}"
+        #textField="ngModel"
+        [(ngModel)]="text"
+        required
+      >
+      <label for="text">Описание:</label>
+    </div>
+
+    <div class="input-field">
+      <button
+        class="btn"
+        [disabled]="!selectedColor || legendForm.invalid"
+      >
+        Добавить легенду
+      </button>
+    </div>
+  </div>
+
+</form>
+
