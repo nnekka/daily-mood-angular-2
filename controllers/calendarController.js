@@ -104,7 +104,7 @@ export const deleteCalendar = async (req, res) => {
         await Day.deleteMany({ calendar: calendar._id})
         await calendar.remove()
 
-        res.json('Calendar removed!')
+        res.status(200).json({ msg: 'Календарь удален!'})
     }
     catch (e) {
         errorHandler(res, e)
@@ -122,7 +122,7 @@ export const deleteLegend = async (req, res) => {
         calendar.legends = calendar.legends.filter(x => x._id.toString() !== req.params.legend_id)
 
         await calendar.save()
-        res.json(calendar)
+        res.status(200).json({ msg: 'Легенда удалена'})
     }
     catch (e) {
         errorHandler(res, e)

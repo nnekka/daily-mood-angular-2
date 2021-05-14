@@ -53,7 +53,7 @@
   </div>
 </form>
 
-<div *ngIf="calendar && calendar.legends">
+<div *ngIf="calendar && calendar.legends; else loader">
   <h5 class="center p3">Добавленные легенды</h5>
   <table class="striped ">
     <tbody>
@@ -67,15 +67,20 @@
         <div>{{legend.text}}</div>
       </td>
       <td>
-        <button class="btn btn-small red">x</button>
+        <button
+          class="btn btn-small red"
+          (click)="onDeleteLegend(legend._id)"
+        >x</button>
       </td>
     </tr>
     </tbody>
   </table>
 </div>
 
-<div>
-
-</div>
+<ng-template #loader>
+  <div class="center">
+    <app-loader></app-loader>
+  </div>
+</ng-template>
 
 
