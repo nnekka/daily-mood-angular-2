@@ -77,7 +77,6 @@ export class AddColorLegendComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(){
-    console.log(this.calendarId, this.form.value)
     this.sub = this.calendarService.addColorLegend(this.calendarId, this.selectedColor, this.form.value.text)
       .subscribe(
         (calendar: Calendar) => {

@@ -1,1 +1,89 @@
-<p>add-image-legend works!</p>
+<h4 class="center">Теперь вы можете выбрать картинку для фона легенды и дать ей описание</h4>
+
+<form
+  class="card"
+  (submit)="onSubmit()"
+  [formGroup]="form"
+>
+  <div class="card-content">
+    <h5 class="card-title">Выберите картинку</h5>
+
+    <div class="image-preview card-image" *ngIf="imagePreview !== '' && imagePreview && form.get('imageSrc').valid">
+      <img [src]="imagePreview" alt="pic">
+    </div>
+    <div class="input-field">
+      <div>
+        <label for="image">Картинка</label>
+        <input
+          id="image"
+          name="image"
+          type="text"
+          formControlName="imageSrc"
+        >
+        <button
+          class="btn btn-small"
+          type="button"
+          (click)="filePicker.click()"
+        >
+          Pick image
+        </button>
+        <input
+          style="visibility: hidden"
+          type="file"
+          #filePicker
+          (change)="onImageChoose($event)"
+        >
+      </div>
+    </div>
+
+    <div class="input-field">
+      <input
+        id="text"
+        type="text"
+        name="text"
+        formControlName="text"
+      >
+      <label for="text">Описание:</label>
+    </div>
+
+    <div class="input-field">
+      <button
+        class="btn btn-small"
+      >
+        Добавить легенду
+      </button>
+    </div>
+  </div>
+</form>
+
+<div *ngIf="calendar && calendar.legends; else loader">
+  <h5 class="center p3">Добавленные легенды</h5>
+  <table class="striped ">
+    <tbody>
+    <tr  *ngFor="let legend of calendar.legends">
+      <td style="width: 10%">
+        <div class="col s1">
+          <div class="legend-cell">
+            <img class="cell-image" [src]="legend.imageSrc" alt="pic">
+          </div>
+        </div>
+      </td>
+      <td style="width: 20%">
+        <div>{{legend.text}}</div>
+      </td>
+      <td>
+        <button
+          class="btn btn-small red"
+          (click)="onDeleteLegend(legend._id)"
+        >x</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #loader>
+  <div class="center">
+    <app-loader></app-loader>
+  </div>
+</ng-template>

@@ -1,0 +1,17 @@
+.image-preview {
+  height: 90px;
+  width: 90px;
+  margin: 16px 0;
+}
+
+.legend-cell {
+  border: 1px solid grey;
+  width: 50px;
+  height: 50px;
+  text-align: -webkit-center;
+}
+
+.legend-cell img {
+  width: 100%;
+  height: 100%;
+}

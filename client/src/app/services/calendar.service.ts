@@ -32,6 +32,10 @@ export class CalendarService {
     return this.http.put<Calendar>(`/api/calendars/${id}/legend`, {color, text})
   }
 
+  addImageLegend(id: string, text: string, imageSrc: string): Observable<Calendar>{
+    return this.http.put<Calendar>(`/api/calendars/${id}/legend`, {text, imageSrc})
+  }
+
   deleteLegend(calendarId: string, legendId: string): Observable<{msg: string}>{
     return this.http.delete<{msg: string}>(`/api/calendars/${calendarId}/legend/${legendId}`)
   }
