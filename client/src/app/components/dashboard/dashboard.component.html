@@ -5,16 +5,16 @@
 <div class="row">
   <div class="col m12" *ngIf="!pending; else loader">
     <table
-      class="responsive-table bordered"
+      class="responsive-table bordered centered"
       *ngIf="calendars.length > 0; else noCalendars"
     >
       <thead>
       <tr>
-        <th class="center">Название</th>
-        <th class="center">Описание</th>
-        <th class="center">Год</th>
-        <th class="center">Тип легенды</th>
-        <th class="center"></th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Год</th>
+        <th>Тип легенды</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -40,7 +40,12 @@
             {{calendar.title}}
           </a>
         </td>
-        <td>{{calendar.description}}</td>
+        <td [title]="calendar.description">
+          {{calendar.description.length > 15
+            ? calendar.description.slice(0, 15)+ '...'
+            : calendar.description
+          }}
+        </td>
         <td>{{calendar.year}}</td>
         <td>{{calendar.legendType}}</td>
         <td>

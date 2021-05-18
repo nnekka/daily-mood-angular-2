@@ -44,4 +44,8 @@ export class CalendarService {
     return this.http.delete<{msg: string}>(`/api/calendars/${id}`)
   }
 
+  addDayToCalendar(day: number, month: number, legendId: string, calendarId: string): Observable<Calendar>{
+    return this.http.put<Calendar>(`/api/calendars/${calendarId}/day`, {day, month, legendId})
+  }
+
 }

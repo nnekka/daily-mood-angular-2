@@ -1,1 +1,93 @@
-<p>calendar works!</p>
+<div class="row">
+
+  <div class="col m8" *ngIf="calendar">
+    <h4>Календарь</h4>
+    <div
+      *ngFor="let day of days"
+      class="row-cell"
+      [class.first-row]="day == 0"
+    >
+      <div
+        *ngFor="let month of months"
+        class="cell"
+        [title]="month"
+        [class.first-col]="month == ''"
+        [style.background-color]="calendar.legendType == 'цветная' && setLegend(day, month)?.legend.color"
+        (click)="addDay(day, month)"
+      >
+        <img
+          [src]="setLegend(day, month)?.legend.imageSrc"
+          alt=""
+          *ngIf="calendar.legendType == 'с картинками'"
+        >
+        <span *ngIf="day == 0">{{month}}</span>
+        <span *ngIf="month == '' && day > 0">{{day}}</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="calendar; else loader">
+    <div class="col m4" *ngIf="calendar.legendType == 'с картинками'">
+      <h4>Легенды</h4>
+      <table>
+        <tbody>
+        <tr *ngFor="let legend of calendar.legends">
+          <td width="20%">
+            <div
+              class="legend-cell"
+              (click)="selectLegend(legend._id)"
+            >
+              <img [src]="legend.imageSrc" alt="pic">
+            </div>
+          </td>
+          <td width="80%">{{legend.text}}</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="legend-cell">
+
+            </div>
+          </td>
+          <td>
+            Clear
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col m4" *ngIf="calendar.legendType == 'цветная'">
+      <h4>Легенды</h4>
+      <table>
+        <tbody>
+        <tr *ngFor="let legend of calendar.legends">
+          <td width="20%">
+            <div
+              class="legend-cell"
+              style="background-color: {{legend.color}}"
+              (click)="selectLegend(legend._id)"
+            >
+            </div>
+          </td>
+          <td width="80%">{{legend.text}}</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="legend-cell">
+            </div>
+          </td>
+          <td>
+            Clear
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

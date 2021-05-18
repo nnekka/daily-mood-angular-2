@@ -11,6 +11,7 @@
       </ul>
       <ul class="right hide-on-med-and-down" *ngIf="user">
         <li routerLinkActive="active"><a routerLink="/user/{{user.id}}">{{user.name}}</a></li>
+        <li routerLinkActive="active"><a routerLink="/create-calendar">Создать календарь</a></li>
         <li routerLinkActive="active" (click)="onLogout()"><a>Log out</a></li>
       </ul>
     </div>

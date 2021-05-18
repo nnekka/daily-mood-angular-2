@@ -1,3 +1,9 @@
+<div class="row p3">
+  <div class="col m12">
+    <button class="btn btn-small" routerLink="/dashboard">back</button>
+  </div>
+</div>
+
 <h4 class="center">Теперь вы можете выбрать картинку для фона легенды и дать ей описание</h4>
 
 <form
@@ -58,7 +64,7 @@
 
 <div *ngIf="calendar && calendar.legends; else loader">
   <h5 class="center p3">Добавленные легенды</h5>
-  <table class="striped ">
+  <table class="striped">
     <tbody>
     <tr  *ngFor="let legend of calendar.legends">
       <td style="width: 10%">
