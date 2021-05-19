@@ -135,7 +135,7 @@ export const deleteLegend = async (req, res) => {
 export const addDay = async (req, res) => {
     try {
         const { day, month, legendId } = req.body
-        const calendar = await Calendar.findById(req.params.id)
+        const calendar = await Calendar.findById(req.params.id).populate('days')
         if (!calendar){
             return res.status(404).json({errors: [{ msg: 'Calendar not found'}] })
         }
@@ -143,19 +143,23 @@ export const addDay = async (req, res) => {
         if (!legend){
             return res.status(404).json({errors: [{ msg: 'Color/image must be chosen for this action'}] })
         }
+        const existDay = calendar.days.find(p => p.day === day && p.month === month)
+        if (existDay){
 
-        const newDay = new Day({
-            day,
-            month,
-            legend,
-            calendar: calendar.id
-        })
+            return res.status(400).json({errors: [{ msg: 'Вы не можете поменять цвет такми образом'}]})
+        } else {
+            const newDay = new Day({
+                day,
+                month,
+                legend,
+                calendar: calendar.id
+            })
 
-        const savedDay = await newDay.save()
-        calendar.days = calendar.days.concat(savedDay.id)
-        await calendar.save()
-        res.json(calendar)
-
+            const savedDay = await newDay.save()
+            calendar.days = calendar.days.concat(savedDay.id)
+            await calendar.save()
+            res.json(calendar)
+        }
     }
     catch (e) {
         errorHandler(res, e)
@@ -181,7 +185,7 @@ export const deleteDay = async (req, res) => {
         calendar.days = calendar.days.filter(x => x._id.toString() !== req.params.day_id)
         await day.remove()
         await calendar.save()
-        res.json(calendar)
+        res.status(200).json({ msg: 'День удален' })
 
     }
     catch (e) {

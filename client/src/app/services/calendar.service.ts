@@ -48,4 +48,8 @@ export class CalendarService {
     return this.http.put<Calendar>(`/api/calendars/${calendarId}/day`, {day, month, legendId})
   }
 
+  deleteDay(calendarId: string, dayId: string): Observable<{msg: string}>{
+    return this.http.delete<{msg: string}>(`/api/calendars/${calendarId}/day/${dayId}`)
+  }
+
 }
