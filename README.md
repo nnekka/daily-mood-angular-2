@@ -8,7 +8,7 @@ It's almost done. The app is pretty simple.
 
 :heavy_check_mark: Login form
 
-![Login](https://raw.githubusercontent.com/nnekka/images/master/1.jpg?token=AF7AHSDJANKHE4D7IP5PSWTAVE776)
+![Login](https://raw.githubusercontent.com/nnekka/images/master/1.jpg?token=AF7AHSCXKSCMHOZX5UNIOWTAVFCKW)
 
 ----------------------------------------------------------------------------------
 :heavy_check_mark: Calendars list of logged user
