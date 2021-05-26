@@ -1,5 +1,12 @@
 ### Well, time has come! 
 
+### Stack:
+   - Angular
+   - Mongo
+   - Express
+   - Node
+   - Styles: [Materialize](https://materializecss.com/)
+
 I finally decided to write a daily-mood on Angular. It will be challenging and fun I hope. :)
 
 It's almost done. The app is pretty simple.
